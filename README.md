@@ -1,6 +1,7 @@
 ## Car Sales Prediction
 
 This project aims to predict the sale price of vehicles based on various features such as year, make, transmission, state, condition, odometer reading, color, and interior. The machine learning model is trained on historical car sales data.
+https://github.com/BiswajitJena2002/Car_Sales_Prediction/assets/121337717/c3dbd762-eea5-49bd-a619-27464ca877ac
 
 ### Model.ipynb
 
