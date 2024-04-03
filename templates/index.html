@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Sales Prediction</title>
+    <style>
+        body {
+            text-align: center; /* Center align content */
+            background-color: #f2f2f2; /* Set background color */
+            color: #333; /* Set text color */
+            font-family: Arial, sans-serif; /* Set font */
+        }
+        form {
+            margin: 0 auto; /* Center align form */
+            width: 50%; /* Set form width */
+            background-color: #fff; /* Set form background color */
+            padding: 20px; /* Add padding */
+            border-radius: 10px; /* Add border radius */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+        }
+        input[type="number"],
+        select {
+            width: 100%; /* Set width to 100% */
+            padding: 10px; /* Add padding */
+            margin-bottom: 10px; /* Add bottom margin */
+            border-radius: 5px; /* Add border radius */
+            border: 1px solid #ccc; /* Add border */
+        }
+        input[type="submit"] {
+            width: 100%; /* Set width to 100% */
+            padding: 10px; /* Add padding */
+            border: none; /* Remove border */
+            background-color: #007bff; /* Set background color */
+            color: #fff; /* Set text color */
+            cursor: pointer; /* Add pointer cursor */
+            border-radius: 5px; /* Add border radius */
+        }
+        h1 {
+            color: #007bff; /* Set heading color */
+        }
+        h2 {
+            margin-top: 20px; /* Add top margin */
+            color: #4caf50; /* Set heading color */
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Sales Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" required><br><br>
+
+        <label for="make">Make:</label>
+        <select id="make" name="make" required>
+            <option value="24">Kia</option>
+            <option value="3">BMW</option>
+            <option value="51">Volvo</option>
+            <option value="36">Nissan</option>
+            <option value="7">Chevrolet</option>
+            <option value="2">Audi</option>
+            <option value="14">Ford</option>
+            <option value="6">Cadillac</option>
+            <option value="0">Acura</option>
+            <option value="27">Lexus</option>
+            <option value="19">Hyundai</option>
+            <option value="5">Buick</option>
+            <option value="20">Infiniti</option>
+            <option value="23">Jeep</option>
+            <option value="33">Mercedes-Benz</option>
+            <option value="35">Mitsubishi</option>
+            <option value="32">Mazda</option>
+            <option value="30">MINI</option>
+            <option value="26">Land Rover</option>
+            <option value="28">Lincoln</option>
+            <option value="22">Jaguar</option>
+            <option value="50">Volkswagen</option>
+            <option value="49">Toyota</option>
+            <option value="46">Subaru</option>
+            <option value="45">Scion</option>
+            <option value="40">Porsche</option>
+            <option value="10">Dodge</option>
+            <option value="11">FIAT</option>
+            <option value="8">Chrysler</option>
+            <option value="12">Ferrari</option>
+            <option value="18">Honda</option>
+            <option value="15">GMC</option>
+            <option value="41">Ram</option>
+            <option value="52">smart</option>
+            <option value="4">Bentley</option>
+            <option value="39">Pontiac</option>
+            <option value="44">Saturn</option>
+            <option value="31">Maserati</option>
+            <option value="34">Mercury</option>
+            <option value="17">HUMMER</option>
+            <option value="43">Saab</option>
+            <option value="47">Suzuki</option>
+            <option value="37">Oldsmobile</option>
+            <option value="42">Rolls-Royce</option>
+            <option value="21">Isuzu</option>
+            <option value="38">Plymouth</option>
+            <option value="48">Tesla</option>
+            <option value="1">Aston Martin</option>
+            <option value="16">Geo</option>
+            <option value="13">Fisker</option>
+            <option value="9">Daewoo</option>
+            <option value="25">Lamborghini</option>
+            <option value="29">Lotus</option>
+        </select><br><br>
+
+        <label for="transmission">Transmission:</label>
+        <select id="transmission" name="transmission" required>
+            <option value="0">Automatic</option>
+            <option value="1">Manual</option>
+        </select><br><br>
+
+        <label for="state">State:</label>
+        <select id="state" name="state" required>
+            <option value="2">CA</option>
+            <option value="29">TX</option>
+            <option value="13">MN</option>
+            <option value="1">AZ</option>
+            <option value="33">WI</option>
+            <option value="28">TN</option>
+            <option value="11">MD</option>
+            <option value="25">PA</option>
+            <option value="4">FL</option>
+            <option value="17">NE</option>
+            <option value="22">OH</option>
+            <option value="12">MI</option>
+            <option value="18">NJ</option>
+            <option value="31">VA</option>
+            <option value="27">SC</option>
+            <option value="8">IN</option>
+            <option value="7">IL</option>
+            <option value="3">CO</option>
+            <option value="30">UT</option>
+            <option value="14">MO</option>
+            <option value="5">GA</option>
+            <option value="20">NV</option>
+            <option value="10">MA</option>
+            <option value="26">PR</option>
+            <option value="16">NC</option>
+            <option value="21">NY</option>
+            <option value="24">OR</option>
+            <option value="9">LA</option>
+            <option value="32">WA</option>
+            <option value="6">HI</option>
+            <option value="23">OK</option>
+            <option value="15">MS</option>
+            <option value="19">NM</option>
+            <option value="0">AL</option>
+        </select><br><br>
+
+        <label for="condition">Condition:</label>
+        <input type="number" id="condition" name="condition" required><br><br>
+
+        <label for="odometer">Odometer:</label>
+        <input type="number" id="odometer" name="odometer" required><br><br>
+
+        <label for="color">Color:</label>
+        <select id="color" name="color" required>
+            <option value="17">White</option>
+            <option value="7">Gray</option>
+            <option value="1">Black</option>
+            <option value="14">Red</option>
+            <option value="15">Silver</option>
+            <option value="3">Brown</option>
+            <option value="0">Beige</option>
+            <option value="2">Blue</option>
+            <option value="13">Purple</option>
+            <option value="4">Burgundy</option>
+            <option value="19">—</option>
+            <option value="6">Gold</option>
+            <option value="18">Yellow</option>
+            <option value="8">Green</option>
+            <option value="5">Charcoal</option>
+            <option value="11">Orange</option>
+            <option value="10">Off-white</option>
+            <option value="16">Turquoise</option>
+            <option value="12">Pink</option>
+            <option value="9">Lime</option>
+        </select><br><br>
+
+        <label for="interior">Interior:</label>
+        <select id="interior" name="interior" required>
+            <option value="1">Black</option>
+            <option value="0">Beige</option>
+            <option value="13">Tan</option>
+            <option value="3">Brown</option>
+            <option value="16">—</option>
+            <option value="6">Gray</option>
+            <option value="4">Burgundy</option>
+            <option value="14">White</option>
+            <option value="12">Silver</option>
+            <option value="8">Off-white</option>
+            <option value="11">Red</option>
+            <option value="15">Yellow</option>
+            <option value="7">Green</option>
+            <option value="10">Purple</option>
+            <option value="2">Blue</option>
+            <option value="9">Orange</option>
+            <option value="5">Gold</option>
+        </select><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+        <h2>Prediction: {{ prediction | int }} ₹</h2>
+    {% endif %}
+</body>
+</html>
+
+
